@@ -21,6 +21,5 @@ defmodule FreelancerRates do
     # Please implement the days_in_budget/3 function
     a = daily_rate(hourly_rate) |> apply_discount(discount)
     budget / a |> Float.floor(1)
-
   end
 end
