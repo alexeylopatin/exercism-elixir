@@ -26,6 +26,22 @@ defmodule Rules do
     not power_pellet_active? and touching_ghost?
   end
 
+  @doc """
+  
+  Determines if the player wins the game.
+
+  The player wins if they have eaten all the dots and have not lost the game.
+  Losing the game is defined as touching a ghost without a power pellet being active.
+
+  ## Parameters
+  - has_eaten_all_dots? : A boolean indicating if all dots have been eaten.
+  - power_pellet_active? : A boolean indicating if a power pellet is active.
+  - touching_ghost? : A boolean indicating if the player is touching a ghost.
+
+  ## Returns
+  - A boolean indicating if the player wins.
+  """
+  @spec win?(boolean(), boolean(), boolean()) :: boolean()
   def win?(has_eaten_all_dots?, power_pellet_active?, touching_ghost?) do
     not lose?(power_pellet_active?, touching_ghost?) and has_eaten_all_dots?
   end
