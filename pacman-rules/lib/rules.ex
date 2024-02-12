@@ -9,18 +9,24 @@ defmodule Rules do
     touching_power_pellet? or touching_dot?
   end
 
+  @doc """
+  Determines if the player loses the game.
+
+  The player loses if they are touching a ghost and do not have a power pellet active.
+
+  ## Parameters
+  - power_pellet_active? : A boolean indicating if a power pellet is active.
+  - touching_ghost? : A boolean indicating if the player is touching a ghost.
+
+  ## Returns
+  - A boolean indicating if the player loses.
+  """
+  @spec lose?(boolean(), boolean()) :: boolean()
   def lose?(power_pellet_active?, touching_ghost?) do
-    case power_pellet_active? do
-       true -> false
-       false -> touching_ghost?
-    end
+    not power_pellet_active? and touching_ghost?
   end
 
   def win?(has_eaten_all_dots?, power_pellet_active?, touching_ghost?) do
-    # Please implement the win?/3 function
-    case lose?(power_pellet_active?, touching_ghost?) do
-       true -> false
-       false -> has_eaten_all_dots?
-    end
+    not lose?(power_pellet_active?, touching_ghost?) and has_eaten_all_dots?
   end
 end
